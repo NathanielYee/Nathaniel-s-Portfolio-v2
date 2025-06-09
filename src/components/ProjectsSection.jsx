@@ -15,7 +15,7 @@ const projects = [
     title: "Reddit Sentiment Analysis On Stock Market Returns and Volatility ",
     description:
       "A data science approach to understanding the correlation between stock sentiment on reddit and anticipated direction of the market",
-    image: "ssrc/assets/SentvsVolatility",
+    image: "public/images/SentvsVolatility",
     tags: ["TypeScript", "D3.js", "Next.js"],
     demoUrl: "https://github.com/NathanielYee/reddit_analysis-correlation_model/blob/main/Stock%20Market%20Analysis%20Project.py",
     githubUrl: "https://github.com/NathanielYee/reddit_analysis-correlation_model",
