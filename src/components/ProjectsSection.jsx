@@ -22,11 +22,11 @@ const projects = [
   },
   {
     id: 3,
-    title: "E-commerce Platform",
+    title: "Portfolio Website",
     description:
-      "Full-featured e-commerce platform with user authentication and payment processing.",
+      "This portfolio website made with react.js and tailwind css.",
     image: "/projects/project3.png",
-    tags: ["React", "Node.js", "Stripe"],
+    tags: ["React", "TailwindCSS", "Vite"],
     demoUrl: "#",
     githubUrl: "#",
   },

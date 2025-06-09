@@ -36,7 +36,8 @@ export const AboutSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="yee.n@northeastern.edu" className="cosmic-button" >
+              <a href="mailto:yee.n@northeastern.edu?subject=Getting%20In%20Touch&body=Hi%20Nathaniel,%0D%0A%0D%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20connect.%0D%0A%0D%0ABest%20regards,
+              " className="cosmic-button" >
                 {" "}
                 Get In Touch
               </a>
