@@ -7,7 +7,7 @@ const navItems = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "Resume", href:"/Nathaniel Yee's Resume Summer 2026.pdf" },
 ];
 
 export const Navbar = () => {
