@@ -14,7 +14,7 @@ export const AboutSection = () => {
             {/* Profile Picture */}
             <div className="flex justify-center">
             <img 
-            src="public/images/melondon.jpg" 
+            src="/images/melondon.jpg" 
             alt="Nathaniel Yee" 
             className="w-72 h-48 md:w-96 md:h-64 rounded-xl object-cover border-4 border-primary/20 shadow-2xl 
                  animate-float opacity-0 animate-fade-in-up hover:scale-105 transition-all duration-1500 ease-out"
@@ -43,7 +43,7 @@ export const AboutSection = () => {
               </a>
 
               <a
-                href="src/Nathaniel Yee's Resume Summer 2026.pdf"
+                href="/Nathaniel Yee's Resume Summer 2026.pdf"
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
                 Download CV
