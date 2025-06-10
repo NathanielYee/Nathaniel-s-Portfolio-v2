@@ -29,9 +29,9 @@ export const HeroSection = () => {
                 </div>
             </div>
 
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce opacity-0 animate-fade-in-delay-4">
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-0 animate-fade-in-delay-4">
                 <span className="text-sm text-muted-foreground mb-2">Scroll</span>
-                <ChevronsDown className="h-5 w-5 text-primary" />
+                <ChevronsDown className="h-5 w-5 text-primary animate-bounce" />
             </div>
         </section>
     );
