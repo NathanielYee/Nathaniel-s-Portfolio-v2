@@ -1,22 +1,22 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
 const projects = [
-  {
-    id: 1,
-    title: "Options Visualizer",
-    description: "An options price visualizer and calculator based on Black-Scholes Model.",
-    image: "/projects/project1.png",
-    tags: ["Streamlit", "Pandas", "Numpy", "Seaborn"],
-    demoUrl: "https://nathanielyee-options-visualizer-main-tvrddq.streamlit.app/",
-    githubUrl: "https://github.com/NathanielYee/Options-Visualizer",
-  },
+    {
+        id: 1,
+        title: "Options Visualizer",
+        description: "An options price visualizer and calculator based on Black-Scholes Model.",
+        image: "/images/bsm.png",
+        tags: ["Streamlit", "Pandas", "Numpy", "Seaborn"],
+        demoUrl: "https://nathanielyee-options-visualizer-main-tvrddq.streamlit.app/",
+        githubUrl: "https://github.com/NathanielYee/Options-Visualizer",
+    },
   {
     id: 2,
     title: "Reddit Sentiment Analysis On Stock Market Returns and Volatility ",
     description:
       "A data science approach to understanding the correlation between stock sentiment on reddit and anticipated direction of the market",
-    image: "public/images/SentvsVolatility",
-    tags: ["TypeScript", "D3.js", "Next.js"],
+    image: "images/SentvsVolatility",
+    tags: ["Python", "YFinance API", "PRAW API", "Seaborn","Sci-Py"],
     demoUrl: "https://github.com/NathanielYee/reddit_analysis-correlation_model/blob/main/Stock%20Market%20Analysis%20Project.py",
     githubUrl: "https://github.com/NathanielYee/reddit_analysis-correlation_model",
   },
@@ -25,7 +25,7 @@ const projects = [
     title: "Portfolio Website",
     description:
       "This portfolio website made with react.js and tailwind css.",
-    image: "/projects/project3.png",
+    image: "/images/portfolio.png",
     tags: ["React", "TailwindCSS", "Vite"],
     demoUrl: "#",
     githubUrl: "#",
