@@ -11,7 +11,7 @@ export const HeroSection = () => {
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
                     <DecodeReveal text="Hi," delay={0} />
                     <span> </span>
-                    <DecodeReveal text="I'm" delay={400} />
+                    <DecodeReveal text="I'm " delay={400} />
                     <span> </span>
                     <DecodeReveal text="Nathaniel" delay={800} />
                     <span> </span>
