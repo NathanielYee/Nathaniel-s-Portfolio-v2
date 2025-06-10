@@ -36,9 +36,7 @@ export const AboutSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="mailto:yee.n@northeastern.edu?subject=Getting%20In%20Touch&body=Hi%20Nathaniel,%0D%0A%0D%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20connect.%0D%0A%0D%0ABest%20regards,
-              " className="cosmic-button" >
-                {" "}
+              <a href="mailto:yee.n@northeastern.edu?subject=Getting%20In%20Touch&body=Hi%20Nathaniel,%0D%0A%0D%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20connect.%0D%0A%0D%0ABest%20regards," className="cosmic-button">
                 Get In Touch
               </a>
 
@@ -58,32 +56,53 @@ export const AboutSection = () => {
                   <Code className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg"> Currently working @Wellington Management</h4>
+                  <h4 className="font-semibold text-lg">
+                    Currently working @
+                    <a 
+                      href="https://www.wellington.com/en"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-primary/80 transition-colors duration-300 underline decoration-primary/30 hover:decoration-primary/60"
+                    >
+                      Wellington Management
+                    </a>
+                  </h4>
                   <p className="text-muted-foreground">
                     Conducting multi-asset global execution research, pre-trade cost models, and TCA.
                   </p>
                 </div>
               </div>
             </div>
+            
             <div className="gradient-border p-6 card-hover">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   <CandlestickChart className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">Prev: @John Hancock</h4>
+                  <h4 className="font-semibold text-lg">
+                    Prev: @
+                    <a 
+                      href="https://www.johnhancock.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-primary/80 transition-colors duration-300 underline decoration-primary/30 hover:decoration-primary/60"
+                    >
+                      John Hancock
+                    </a>
+                  </h4>
                   <p className="text-muted-foreground">
                     Created VBA automations for financial reporting and worked on variable/fixed annuities.
                   </p>
                 </div>
               </div>
             </div>
+            
             <div className="gradient-border p-6 card-hover">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   <Briefcase className="h-6 w-6 text-primary" />
                 </div>
-
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">President of NU Systematic Alpha</h4>
                   <p className="text-muted-foreground">
