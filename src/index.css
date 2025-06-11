@@ -158,7 +158,7 @@
 
 @utility text-glow {
   @apply relative;
-  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); /* Blue glow instead of purple */
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); 
 }
 
 @utility card-hover {
