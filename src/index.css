@@ -18,6 +18,7 @@
   --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
   --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
   --animate-meteor: meteor 5s linear infinite;
+  --animate-meteor-fade: meteor-fade 6s linear infinite;
 
   @keyframes float {
     0%,
@@ -60,10 +61,54 @@
       opacity: 0;
     }
   }
+  @keyframes meteor-fade {
+    0% {
+      opacity: 0;
+      transform: rotate(215deg) translateX(200px);
+    }
+    5% {
+      opacity: 0.1;
+    }
+    12% {
+      opacity: 0.6;
+    }
+    20% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 0.8;
+    }
+    92% {
+      opacity: 0.4;
+    }
+    97% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 0;
+      transform: rotate(215deg) translateX(-800px);
+    }
+  }
 }
 
 @layer base {
   :root {
+    /* Default to Dark Mode - Dark Blue Theme */
+    --background: 220 50% 8%;         /* Very dark blue background */
+    --foreground: 210 40% 90%;        /* Light blue-white text */
+
+    --card: 220 45% 12%;              /* Dark blue card background */
+
+    --primary: 210 85% 70%;           /* Bright light blue accent */
+    --primary-foreground: 220 50% 8%; /* Dark background for primary text */
+
+    --border: 220 35% 20%;            /* Dark blue border */
+  }
+
+  .light {
     /* Light Mode - Light Blue Theme */
     --background: 210 50% 96%;        /* Very light blue background */
     --foreground: 220 60% 15%;        /* Dark blue text */
@@ -74,19 +119,6 @@
     --primary-foreground: 210 50% 96%; /* Light background for primary text */
 
     --border: 210 30% 85%;            /* Light blue border */
-  }
-
-  .dark {
-    /* Dark Mode - Dark Blue Theme */
-    --background: 220 50% 8%;         /* Very dark blue background */
-    --foreground: 210 40% 90%;        /* Light blue-white text */
-
-    --card: 220 45% 12%;              /* Dark blue card background */
-
-    --primary: 210 85% 70%;           /* Bright light blue accent */
-    --primary-foreground: 220 50% 8%; /* Dark background for primary text */
-
-    --border: 220 35% 20%;            /* Dark blue border */
   }
 
   * {
@@ -184,6 +216,9 @@
   animation: fade-in-up 0.8s ease-out forwards;
 }
 
+.animate-meteor-fade {
+  animation: meteor-fade 6s linear infinite;
+}
 
 #root {
   max-width: 100%;

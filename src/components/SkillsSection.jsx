@@ -5,43 +5,35 @@ const skills = [
   // Technologies
   { 
     name: "Python", 
-    level: 95, 
     category: "Technologies",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
   },
   { 
-    name: "SQL", 
-    level: 90, 
+    name: "MySQL", 
     category: "Technologies",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
   },
   { 
     name: "VBA", 
-    level: 90, 
     category: "Technologies"
-    // No logo - VBA doesn't have a widely recognized icon
   },
   { 
     name: "React", 
-    level: 90, 
     category: "Technologies",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
   },
   { 
     name: "Tableau", 
-    level: 85, 
     category: "Technologies",
     logo: "https://logos-world.net/wp-content/uploads/2021/10/Tableau-Symbol.png"
   },
   { 
     name: "Tailwind CSS", 
-    level: 90, 
     category: "Technologies",
     logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
   },
   { 
     name: "HTML/CSS", 
-    level: 80, 
     category: "Technologies",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
   },
@@ -49,43 +41,41 @@ const skills = [
   // Packages
   { 
     name: "Pandas", 
-    level: 80, 
     category: "Packages",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
   },
   { 
     name: "Seaborn", 
-    level: 75, 
     category: "Packages",
     logo: "https://seaborn.pydata.org/_static/logo-wide-lightbg.svg"
   },
   { 
+    name: "Statsmodels", 
+    category: "Packages",
+    logo: "https://www.statsmodels.org/stable/_images/statsmodels-logo-v2-horizontal.svg"
+  },
+  { 
     name: "NLTK", 
-    level: 70, 
     category: "Packages",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
   },
   { 
     name: "Altair", 
-    level: 65, 
     category: "Packages",
     logo: "https://altair-viz.github.io/_static/altair-logo-light.png"
   },
   { 
     name: "Streamlit", 
-    level: 60, 
     category: "Packages",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg"
   },
   { 
     name: "Sci-Kit Learn", 
-    level: 60, 
     category: "Packages",
     logo: "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg"
   },
   { 
     name: "XGBoost", 
-    level: 60, 
     category: "Packages",
     logo: "https://raw.githubusercontent.com/dmlc/dmlc.github.io/master/img/logo-m/xgboost.png"
   },
@@ -93,31 +83,26 @@ const skills = [
   // Tools
   { 
     name: "Git/GitHub", 
-    level: 90, 
     category: "tools",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
   },
   { 
     name: "Docker", 
-    level: 70, 
     category: "tools",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
   },
   { 
     name: "Figma", 
-    level: 85, 
     category: "tools",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
   },
   { 
     name: "VS Code", 
-    level: 95, 
     category: "tools",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
   },
   { 
     name: "PyCharm", 
-    level: 95, 
     category: "tools",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg"
   }
