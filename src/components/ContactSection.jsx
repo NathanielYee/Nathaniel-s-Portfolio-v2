@@ -47,10 +47,8 @@ export const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call - replace with your actual form submission logic
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // For demonstration - replace with actual form submission to your backend
       console.log("Form submitted:", formData);
       
       toast.success("Message sent successfully! I'll get back to you soon.", {
@@ -235,7 +233,7 @@ export const ContactSection = () => {
             </p>
             <div className="flex items-center gap-6">
               <a
-                href="https://www.linkedin.com/in/nathaniel-yee/" // Replace with your actual LinkedIn URL
+                href="https://www.linkedin.com/in/nathaniel-yee/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-card border border-border hover:border-primary hover:bg-primary/10 transition-all duration-300 group"
@@ -244,7 +242,7 @@ export const ContactSection = () => {
                 <Linkedin className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
               </a>
               <a
-                href="https://github.com/NathanielYee" // Replace with your actual GitHub URL
+                href="https://github.com/NathanielYee"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-card border border-border hover:border-primary hover:bg-primary/10 transition-all duration-300 group"
