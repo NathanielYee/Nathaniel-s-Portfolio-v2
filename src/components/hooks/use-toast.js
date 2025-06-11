@@ -3,6 +3,13 @@ import * as React from "react";
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
 
+const actionTypes = {
+  ADD_TOAST: "ADD_TOAST",
+  UPDATE_TOAST: "UPDATE_TOAST",
+  DISMISS_TOAST: "DISMISS_TOAST",
+  REMOVE_TOAST: "REMOVE_TOAST",
+};
+
 let count = 0;
 
 function genId() {
@@ -28,7 +35,7 @@ const addToRemoveQueue = (toastId) => {
   toastTimeouts.set(toastId, timeout);
 };
 
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_TOAST":
       return {
@@ -92,7 +99,7 @@ function dispatch(action) {
   });
 }
 
-function toast(props) {
+function toast({ ...props }) {
   const id = genId();
 
   const update = (props) =>
@@ -100,6 +107,7 @@ function toast(props) {
       type: "UPDATE_TOAST",
       toast: { ...props, id },
     });
+  
   const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id });
 
   dispatch({

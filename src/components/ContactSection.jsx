@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send, Loader2, Github, Linkedin } from "lucide-react";
-import { toast } from "react-hot-toast";
+import { useToast } from "@/hooks/use-toast";
 
 export const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +10,7 @@ export const ContactSection = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,19 +22,35 @@ export const ContactSection = () => {
 
   const validateForm = () => {
     if (!formData.name.trim()) {
-      toast.error("Please enter your name");
+      toast({
+        title: "Validation Error",
+        description: "Please enter your name",
+        variant: "destructive",
+      });
       return false;
     }
     if (!formData.email.trim()) {
-      toast.error("Please enter your email");
+      toast({
+        title: "Validation Error", 
+        description: "Please enter your email",
+        variant: "destructive",
+      });
       return false;
     }
     if (!formData.email.includes("@")) {
-      toast.error("Please enter a valid email address");
+      toast({
+        title: "Validation Error",
+        description: "Please enter a valid email address",
+        variant: "destructive",
+      });
       return false;
     }
     if (!formData.message.trim()) {
-      toast.error("Please enter a message");
+      toast({
+        title: "Validation Error",
+        description: "Please enter a message", 
+        variant: "destructive",
+      });
       return false;
     }
     return true;
@@ -51,9 +68,9 @@ export const ContactSection = () => {
       
       console.log("Form submitted:", formData);
       
-      toast.success("Message sent successfully! I'll get back to you soon.", {
-        duration: 4000,
-        icon: "🚀"
+      toast({
+        title: "Message Sent! 🚀",
+        description: "I'll get back to you soon!",
       });
 
       // Reset form
@@ -64,8 +81,10 @@ export const ContactSection = () => {
         message: ""
       });
     } catch (error) {
-      toast.error("Failed to send message. Please try again.", {
-        duration: 4000
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
