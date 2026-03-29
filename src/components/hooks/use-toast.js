@@ -3,13 +3,6 @@ import * as React from "react";
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
 
-const actionTypes = {
-  ADD_TOAST: "ADD_TOAST",
-  UPDATE_TOAST: "UPDATE_TOAST",
-  DISMISS_TOAST: "DISMISS_TOAST",
-  REMOVE_TOAST: "REMOVE_TOAST",
-};
-
 let count = 0;
 
 function genId() {
@@ -18,6 +11,17 @@ function genId() {
 }
 
 const toastTimeouts = new Map();
+
+const listeners = [];
+
+let memoryState = { toasts: [] };
+
+function dispatch(action) {
+  memoryState = reducer(memoryState, action);
+  listeners.forEach((listener) => {
+    listener(memoryState);
+  });
+}
 
 const addToRemoveQueue = (toastId) => {
   if (toastTimeouts.has(toastId)) {
@@ -88,17 +92,6 @@ export const reducer = (state, action) => {
   }
 };
 
-const listeners = [];
-
-let memoryState = { toasts: [] };
-
-function dispatch(action) {
-  memoryState = reducer(memoryState, action);
-  listeners.forEach((listener) => {
-    listener(memoryState);
-  });
-}
-
 function toast({ ...props }) {
   const id = genId();
 
@@ -107,7 +100,7 @@ function toast({ ...props }) {
       type: "UPDATE_TOAST",
       toast: { ...props, id },
     });
-  
+
   const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id });
 
   dispatch({

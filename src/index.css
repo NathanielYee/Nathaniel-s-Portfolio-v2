@@ -220,21 +220,6 @@
   animation: meteor-fade 6s linear infinite;
 }
 
-@layer base {
-  :root {
-    /* Existing variables... */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --muted-foreground: 210 40% 70%;
-  }
-
-  .light {
-    /* Existing light mode variables... */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --muted-foreground: 220 60% 40%;
-  }
-}
 
 
 #root {

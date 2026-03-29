@@ -53,46 +53,46 @@ export const AboutSection = () => {
             <div className="gradient-border p-6 card-hover">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
+                  <CandlestickChart className="h-6 w-6 text-primary" />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-semibold text-lg">
+                    Currently @
+                    <a
+                      href="https://www.ubs.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-primary/80 transition-colors duration-300 underline decoration-primary/30 hover:decoration-primary/60"
+                    >
+                      {" "}UBS
+                    </a>
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Global Markets Sales & Trading — Equity Derivatives Strategy, Index Flow Volatility Trading, and Knowledge Network.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="gradient-border p-6 card-hover">
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-full bg-primary/10">
                   <Code className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">
-                    Currently working @
-                    <a 
+                    Prev: @
+                    <a
                       href="https://www.wellington.com/en"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary hover:text-primary/80 transition-colors duration-300 underline decoration-primary/30 hover:decoration-primary/60"
                     >
-                      Wellington Management
+                      {" "}Wellington Management
                     </a>
                   </h4>
                   <p className="text-muted-foreground">
-                    Conducting multi-asset global execution research, pre-trade cost models, and TCA.
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <CandlestickChart className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg">
-                    Prev: @
-                    <a 
-                      href="https://www.johnhancock.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:text-primary/80 transition-colors duration-300 underline decoration-primary/30 hover:decoration-primary/60"
-                    >
-                      John Hancock
-                    </a>
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Created VBA automations for financial reporting and worked on variable/fixed annuities.
+                    Conducted multi-asset global execution research, pre-trade cost models, and TCA.
                   </p>
                 </div>
               </div>
@@ -104,7 +104,16 @@ export const AboutSection = () => {
                   <Briefcase className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">President of NU Systematic Alpha</h4>
+                <h4 className="font-semibold text-lg">
+                    President of NU Systematic Alpha
+                    <a 
+                      href="https://www.nusystematicalpha.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-primary/80 transition-colors duration-300 underline decoration-primary/30 hover:decoration-primary/60"
+                    >
+                    </a>
+                  </h4>
                   <p className="text-muted-foreground">
                     Leading a team of Quantitative Researchers to find alpha using alternative data and statistical methods.
                   </p>

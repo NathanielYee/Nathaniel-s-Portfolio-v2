@@ -1,17 +1,27 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
 const projects = [
-    {
-        id: 1,
-        title: "Options Visualizer",
-        description: "An options price visualizer and calculator based on Black-Scholes Model.",
-        image: "/images/bsm.png",
-        tags: ["Streamlit", "Pandas", "Numpy", "Seaborn"],
-        demoUrl: "https://nathanielyee-options-visualizer-main-tvrddq.streamlit.app/",
-        githubUrl: "https://github.com/NathanielYee/Options-Visualizer",
-    },
+  {
+    id: 1,
+    title: "Portfolio Performance Dashboard",
+    description:
+      "An interactive portfolio analytics tool with real-time tracking, Monte Carlo simulations, risk metrics, and benchmark comparison.",
+    image: "/images/portfolioviz.png",
+    tags: ["Streamlit", "Plotly", "Pandas", "NumPy", "yFinance"],
+    demoUrl: "https://portfolioperformancedash.streamlit.app/",
+    githubUrl: "https://github.com/NathanielYee/Portfolio_Performance_Dash",
+  },
   {
     id: 2,
+    title: "Options Visualizer",
+    description: "An options price visualizer and calculator based on Black-Scholes Model.",
+    image: "/images/bsm.png",
+    tags: ["Streamlit", "Pandas", "Numpy", "Seaborn"],
+    demoUrl: "https://nathanielyee-options-visualizer-main-tvrddq.streamlit.app/",
+    githubUrl: "https://github.com/NathanielYee/Options-Visualizer",
+  },
+  {
+    id: 3,
     title: "Reddit Sentiment Analysis On Stock Market Returns and Volatility ",
     description:
       "A data science approach to understanding the correlation between stock sentiment on reddit and anticipated direction of the market",
@@ -21,7 +31,7 @@ const projects = [
     githubUrl: "https://github.com/NathanielYee/reddit_analysis-correlation_model",
   },
   {
-    id: 3,
+    id: 4,
     title: "Portfolio Website",
     description:
       "This portfolio website made with react.js and tailwind css.",

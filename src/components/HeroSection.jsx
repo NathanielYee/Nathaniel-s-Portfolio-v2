@@ -18,8 +18,8 @@ export const HeroSection = () => {
                     <DecodeReveal text="Yee" delay={1600} />
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-0 opacity-0 animate-fade-in-delay-3">
-                    A Northeastern student studying Data Science and Finance with a minor in Mathematics. I have interests in market microstructure, 
-                    global trading, and quantitative research. Currently, I'm working at Wellington Management Company on the Quantitative Trading Research and Analytics team!
+                    A Northeastern student studying Data Science, Finance, and Mathematics. I have interests in quantitative trading,
+                    market microstructure, and research. Currently, I'm at UBS on the Global Markets Sales & Trading desk!
                 </p>
 
                 <div className="pt-4 opacity-0 animate-fade-in-delay-4">

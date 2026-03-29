@@ -81,8 +81,23 @@ const skills = [
   },
 
   // Tools
-  { 
-    name: "Git/GitHub", 
+  {
+    name: "KDB+/Q",
+    category: "Technologies",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/6/69/Kx_logo.svg"
+  },
+  {
+    name: "Bloomberg Terminal",
+    category: "tools",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/56/Bloomberg_logo.svg"
+  },
+  {
+    name: "Claude Code",
+    category: "tools",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Claude_AI_logo.svg"
+  },
+  {
+    name: "Git/GitHub",
     category: "tools",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
   },
