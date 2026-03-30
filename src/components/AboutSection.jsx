@@ -1,32 +1,54 @@
-import { Briefcase, Code, CandlestickChart } from "lucide-react";
+import { Briefcase, Code, CandlestickChart, GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
 
 const timelineEntries = [
   {
-    title: "Currently @",
-    linkText: " UBS",
+    title: "S&T Intern @",
+    linkText: " UBS Securities",
     href: "https://www.ubs.com",
-    description:
-      "Global Markets Sales & Trading — Equity Derivatives Strategy, Index Flow Volatility Trading, and Knowledge Network.",
+    subtitle: "Jan 2026 – Present",
+    bullets: [
+      "Building Retail Market Making and Short Interest Equity Derivative models to forecast anticipated flows and analyze deviations in trading activity across sectors.",
+      "Creating Delta Hedging transaction cost platform for Index Volatility Trading to analyze costs when hedging via spot and futures trades.",
+    ],
     icon: CandlestickChart,
     current: true,
   },
   {
-    title: "Prev: @",
+    title: "Quant Trading Research Co-op @",
     linkText: " Wellington Management",
     href: "https://www.wellington.com/en",
-    description:
-      "Conducted multi-asset global execution research, pre-trade cost models, and TCA.",
+    subtitle: "Jan 2025 – Aug 2025",
+    bullets: [
+      "Developed full-stack FX slippages dashboard with dynamic filtering for broker-dealer, venue, and algo-strategy — enabling real-time analysis of toxic flows and markouts.",
+      "Designed pre-trade cost models for futures and muni bonds using Python, SQL, XGBoost, and Plotly Dash.",
+      "Automated daily Commodity and FX futures reporting via Python + Office API, eliminating 2-3 hours of manual work daily.",
+    ],
     icon: Code,
+    current: false,
+  },
+  {
+    title: "Actuarial Co-op @",
+    linkText: " John Hancock",
+    href: "https://www.johnhancock.com",
+    subtitle: "Jan 2024 – Jun 2024",
+    bullets: [
+      "Generated Daily Production Reports tracking ~$100M in daily transactions for the U.S. CFO and CEO using Excel, PowerBI, and SQL Server.",
+      "Automated 300 manual model inputs on quarterly CSM Reconciliation reports using VBA.",
+    ],
+    icon: Briefcase,
     current: false,
   },
   {
     title: "President of",
     linkText: " NU Systematic Alpha",
     href: "https://www.nusystematicalpha.com/",
-    description:
-      "Leading a team of Quantitative Researchers to find alpha using alternative data and statistical methods.",
-    icon: Briefcase,
+    subtitle: "Sep 2024 – Present",
+    bullets: [
+      "Deliver lectures on asset valuation, factor modeling, probability theory, and regression techniques.",
+      "Lead researchers using weather, satellite imaging, and supply/demand data to build a factor model predicting spot Oil prices.",
+    ],
+    icon: GraduationCap,
     current: false,
   },
 ];
@@ -106,18 +128,19 @@ export const AboutSection = () => {
             viewport={{ once: true, amount: 0.3 }}
           >
             <h3 className="text-2xl font-semibold">
-              Curious and Passionate Student
+              Quantitative Trading & Research
             </h3>
 
             <p className="text-muted-foreground">
-              After taking my first data science class freshman year at
-              Northeastern. I was hooked, ever since I've strived to create new
-              and exciting projects.
+              I build tools and models at the intersection of data science and
+              financial markets — from volatility surfaces and options pricing
+              to execution analytics and portfolio risk.
             </p>
 
             <p className="text-muted-foreground">
-              I'm passionate about applying statistical and machine learning
-              models to financial markets, to make sense of market volatility.
+              With experience on sell-side trading desks and a foundation in
+              statistics and mathematics, I'm focused on turning market data
+              into actionable insight.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start">
@@ -190,9 +213,17 @@ export const AboutSection = () => {
                             {entry.linkText}
                           </a>
                         </h4>
-                        <p className="text-muted-foreground mt-1">
-                          {entry.description}
-                        </p>
+                        {entry.subtitle && (
+                          <p className="text-sm text-muted-foreground/70 mt-0.5">{entry.subtitle}</p>
+                        )}
+                        <ul className="mt-2 space-y-1.5">
+                          {entry.bullets.map((bullet, i) => (
+                            <li key={i} className="text-sm text-muted-foreground leading-relaxed flex gap-2">
+                              <span className="text-primary/60 mt-1 flex-shrink-0">&#8226;</span>
+                              <span>{bullet}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
                   </div>

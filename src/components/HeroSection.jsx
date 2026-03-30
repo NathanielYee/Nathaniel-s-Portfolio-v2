@@ -119,8 +119,8 @@ export const HeroSection = () => {
 
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-0 opacity-0 animate-fade-in-delay-3">
           Northeastern student in Data Science, Finance, and Mathematics
-          exploring quantitative trading and market microstructure. Currently
-          on the Global Markets Sales & Trading desk at UBS.
+          exploring quantitative trading and research. Currently working as a
+          Global Markets Sales & Trading intern at UBS.
         </p>
 
         <div className="pt-4 opacity-0 animate-fade-in-delay-4">
