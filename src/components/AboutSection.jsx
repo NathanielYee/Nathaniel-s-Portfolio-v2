@@ -1,5 +1,5 @@
 import { Briefcase, Code, CandlestickChart, GraduationCap } from "lucide-react";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
 
 const timelineEntries = [
@@ -73,52 +73,59 @@ export const AboutSection = () => {
   const timelineRef = useRef(null);
   const dotRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [dotOffsets, setDotOffsets] = useState([]);
+  const [dotPositions, setDotPositions] = useState([]);
 
-  const { scrollYProgress } = useScroll({
-    target: timelineRef,
-    offset: ["start 0.6", "end 0.4"],
-  });
-
-  // Measure actual dot positions relative to the timeline container
-  const measureDots = useCallback(() => {
-    if (!timelineRef.current || dotRefs.current.length === 0) return;
-    const containerTop = timelineRef.current.getBoundingClientRect().top + window.scrollY;
-    const offsets = dotRefs.current.map((ref) => {
-      if (!ref) return 0;
-      const rect = ref.getBoundingClientRect();
-      return rect.top + window.scrollY - containerTop + rect.height / 2;
+  // Measure dot positions relative to the timeline container
+  const measure = useCallback(() => {
+    const container = timelineRef.current;
+    if (!container) return;
+    const containerRect = container.getBoundingClientRect();
+    const positions = dotRefs.current.map((el) => {
+      if (!el) return 0;
+      const rect = el.getBoundingClientRect();
+      // Center of the dot relative to the container top
+      return rect.top - containerRect.top + rect.height / 2;
     });
-    setDotOffsets(offsets);
+    setDotPositions(positions);
   }, []);
 
+  // Determine which dot is closest to viewport center
+  const onScroll = useCallback(() => {
+    if (dotRefs.current.length === 0) return;
+    const viewCenter = window.innerHeight * 0.55;
+    let closest = 0;
+    let closestDist = Infinity;
+    dotRefs.current.forEach((el, i) => {
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const dotCenter = rect.top + rect.height / 2;
+      const dist = Math.abs(dotCenter - viewCenter);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closest = i;
+      }
+    });
+    setActiveIndex(closest);
+    measure();
+  }, [measure]);
+
   useEffect(() => {
-    measureDots();
-    window.addEventListener("resize", measureDots);
-    const timeout = setTimeout(measureDots, 500);
+    measure();
+    const t1 = setTimeout(measure, 300);
+    const t2 = setTimeout(measure, 1000);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", measure);
     return () => {
-      window.removeEventListener("resize", measureDots);
-      clearTimeout(timeout);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", measure);
     };
-  }, [measureDots]);
+  }, [measure, onScroll]);
 
-  // Map scroll progress to snapping between dot positions
-  const numEntries = timelineEntries.length;
-  const inputStops = [];
-  const outputIndices = [];
-  for (let i = 0; i < numEntries; i++) {
-    const arriveAt = Math.max(0, (i - 0.05) / Math.max(1, numEntries - 1));
-    const leaveAt = Math.min(1, (i + 0.25) / Math.max(1, numEntries - 1));
-    inputStops.push(arriveAt, leaveAt);
-    outputIndices.push(i, i);
-  }
-  const activeIndexMotion = useTransform(scrollYProgress, inputStops, outputIndices);
-
-  useMotionValueEvent(activeIndexMotion, "change", (v) => {
-    setActiveIndex(Math.round(v));
-  });
-
-  const currentOffset = dotOffsets.length > 0 ? dotOffsets[Math.min(activeIndex, dotOffsets.length - 1)] : 0;
+  const currentOffset = dotPositions.length > 0
+    ? dotPositions[Math.min(activeIndex, dotPositions.length - 1)]
+    : 0;
 
   return (
     <section id="about" className="py-24 px-4 relative">
@@ -253,11 +260,13 @@ export const AboutSection = () => {
                   viewport={{ once: true, amount: 0.3 }}
                 >
                   {/* Dot on the timeline */}
-                  <div
-                    className="mt-6 flex-shrink-0 w-10 flex justify-center"
-                    ref={(el) => { dotRefs.current[index] = el; }}
-                  >
-                    <TimelineDot />
+                  <div className="mt-6 flex-shrink-0 w-10 flex justify-center">
+                    <div
+                      ref={(el) => { dotRefs.current[index] = el; }}
+                      className="relative flex items-center justify-center z-10"
+                    >
+                      <span className="relative h-4 w-4 rounded-full border-2 border-primary bg-background" />
+                    </div>
                   </div>
 
                   {/* Card */}
