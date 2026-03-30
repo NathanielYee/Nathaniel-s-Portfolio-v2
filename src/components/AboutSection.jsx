@@ -1,5 +1,6 @@
 import { Briefcase, Code, CandlestickChart, GraduationCap } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 const timelineEntries = [
   {
@@ -62,20 +63,63 @@ const fadeSlideUp = {
   }),
 };
 
-const TimelineDot = ({ current }) => (
+const TimelineDot = () => (
   <div className="relative flex items-center justify-center z-10">
-    {current && (
-      <span className="absolute h-6 w-6 rounded-full bg-primary/30 animate-ping" />
-    )}
-    <span
-      className={`relative h-4 w-4 rounded-full border-2 border-primary ${
-        current ? "bg-primary shadow-[0_0_12px_rgba(var(--primary-rgb,99,102,241),0.6)]" : "bg-background"
-      }`}
-    />
+    <span className="relative h-4 w-4 rounded-full border-2 border-primary bg-background" />
   </div>
 );
 
 export const AboutSection = () => {
+  const timelineRef = useRef(null);
+  const dotRefs = useRef([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [dotOffsets, setDotOffsets] = useState([]);
+
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 0.6", "end 0.4"],
+  });
+
+  // Measure actual dot positions relative to the timeline container
+  const measureDots = useCallback(() => {
+    if (!timelineRef.current || dotRefs.current.length === 0) return;
+    const containerTop = timelineRef.current.getBoundingClientRect().top + window.scrollY;
+    const offsets = dotRefs.current.map((ref) => {
+      if (!ref) return 0;
+      const rect = ref.getBoundingClientRect();
+      return rect.top + window.scrollY - containerTop + rect.height / 2;
+    });
+    setDotOffsets(offsets);
+  }, []);
+
+  useEffect(() => {
+    measureDots();
+    window.addEventListener("resize", measureDots);
+    const timeout = setTimeout(measureDots, 500);
+    return () => {
+      window.removeEventListener("resize", measureDots);
+      clearTimeout(timeout);
+    };
+  }, [measureDots]);
+
+  // Map scroll progress to snapping between dot positions
+  const numEntries = timelineEntries.length;
+  const inputStops = [];
+  const outputIndices = [];
+  for (let i = 0; i < numEntries; i++) {
+    const arriveAt = Math.max(0, (i - 0.05) / Math.max(1, numEntries - 1));
+    const leaveAt = Math.min(1, (i + 0.25) / Math.max(1, numEntries - 1));
+    inputStops.push(arriveAt, leaveAt);
+    outputIndices.push(i, i);
+  }
+  const activeIndexMotion = useTransform(scrollYProgress, inputStops, outputIndices);
+
+  useMotionValueEvent(activeIndexMotion, "change", (v) => {
+    setActiveIndex(Math.round(v));
+  });
+
+  const currentOffset = dotOffsets.length > 0 ? dotOffsets[Math.min(activeIndex, dotOffsets.length - 1)] : 0;
+
   return (
     <section id="about" className="py-24 px-4 relative">
       <div className="container mx-auto max-w-5xl">
@@ -173,9 +217,27 @@ export const AboutSection = () => {
         </motion.h3>
 
         {/* Vertical timeline */}
-        <div className="relative max-w-2xl mx-auto">
+        <div className="relative max-w-2xl mx-auto" ref={timelineRef}>
           {/* Vertical line — centered on the 40px-wide dot column */}
           <div className="absolute left-[20px] -translate-x-1/2 top-2 bottom-2 w-px bg-gradient-to-b from-primary/60 via-primary/30 to-transparent" />
+
+          {/* Scroll-tracking progress line */}
+          <motion.div
+            className="absolute left-[20px] -translate-x-1/2 top-2 w-px bg-gradient-to-b from-primary to-primary/80"
+            animate={{ height: currentOffset }}
+            transition={{ type: "spring", stiffness: 120, damping: 20 }}
+            style={{ originY: 0 }}
+          />
+
+          {/* Scroll-tracking pulsing dot — snaps to each entry's dot position */}
+          <motion.div
+            className="absolute left-[20px] -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center"
+            animate={{ top: currentOffset }}
+            transition={{ type: "spring", stiffness: 120, damping: 20 }}
+          >
+            <span className="absolute h-7 w-7 rounded-full bg-primary/25 animate-ping" />
+            <span className="relative h-4 w-4 rounded-full bg-primary border-2 border-primary shadow-[0_0_14px_rgba(59,130,246,0.6)]" />
+          </motion.div>
 
           <div className="flex flex-col gap-10">
             {timelineEntries.map((entry, index) => {
@@ -191,8 +253,11 @@ export const AboutSection = () => {
                   viewport={{ once: true, amount: 0.3 }}
                 >
                   {/* Dot on the timeline */}
-                  <div className="mt-6 flex-shrink-0 w-10 flex justify-center">
-                    <TimelineDot current={entry.current} />
+                  <div
+                    className="mt-6 flex-shrink-0 w-10 flex justify-center"
+                    ref={(el) => { dotRefs.current[index] = el; }}
+                  >
+                    <TimelineDot />
                   </div>
 
                   {/* Card */}

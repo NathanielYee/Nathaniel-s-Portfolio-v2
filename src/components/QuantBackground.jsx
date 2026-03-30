@@ -7,7 +7,7 @@ const GreekParticles = () => {
   const [particles, setParticles] = useState([]);
 
   useEffect(() => {
-    const count = Math.floor((window.innerWidth * window.innerHeight) / 20000);
+    const count = Math.floor((window.innerWidth * window.innerHeight) / 35000);
     const arr = [];
     for (let i = 0; i < count; i++) {
       arr.push({
@@ -15,8 +15,8 @@ const GreekParticles = () => {
         char: GREEKS[Math.floor(Math.random() * GREEKS.length)],
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 24 + 20,
-        opacity: Math.random() * 0.15 + 0.35,
+        size: Math.random() * 22 + 18,
+        opacity: Math.random() * 0.1 + 0.2,
         driftX: (Math.random() - 0.5) * 35,
         driftY: (Math.random() - 0.5) * 25,
         driftDuration: Math.random() * 30 + 20,

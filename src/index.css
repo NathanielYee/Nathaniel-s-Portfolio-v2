@@ -180,20 +180,6 @@
   overflow: hidden;
 }
 
-@utility section-glow {
-  position: relative;
-}
-
-@utility section-glow::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.2), transparent);
-}
 
 @utility star {
   @apply absolute rounded-full bg-white;
